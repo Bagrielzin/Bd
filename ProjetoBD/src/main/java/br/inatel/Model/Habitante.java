@@ -9,13 +9,11 @@ public class Habitante {
     private String item_magico_nome;
     private String localizacao_cidade;
 
-    public Habitante(String nome, String raca, int idade, double altura, String item_magico_nome, String localizacao_cidade) {
+    public Habitante(String nome, String raca, int idade, double altura) {
         this.nome = nome;
         this.raca = raca;
         this.idade = idade;
         this.altura = altura;
-        this.item_magico_nome = item_magico_nome;
-        this.localizacao_cidade = localizacao_cidade;
     }
 
     public String getNome() {

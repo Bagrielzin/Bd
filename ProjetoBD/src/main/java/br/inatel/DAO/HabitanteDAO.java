@@ -13,7 +13,7 @@ public class HabitanteDAO extends ConnectionDAO{
     public boolean insertHabitante(Habitante habitante){
         connectToDB();
 
-        String sql = "INSERT INTO Habitante (nome, raça, idade, altura, item_magico_nome, localizacao_cidade)";
+        String sql = "INSERT INTO Habitante (nome, raça, idade, altura) VALUES (?,?,?,?)";
 
         try {
             pst = con.prepareStatement(sql);
@@ -21,8 +21,6 @@ public class HabitanteDAO extends ConnectionDAO{
             pst.setString(2, habitante.getRaca());
             pst.setInt(3, habitante.getIdade());
             pst.setDouble(4, habitante.getAltura());
-            pst.setString(5, habitante.getItem_magico_nome());
-            pst.setString(6, habitante.getLocalizacao_cidade());
             pst.execute();
             sucesso = true;
         } catch (SQLException exc) {
@@ -52,14 +50,12 @@ public class HabitanteDAO extends ConnectionDAO{
 
             while (rs.next()) {
 
-                Habitante habitanteAux = new Habitante(rs.getString("nome"), rs.getString("raça"), rs.getInt("idade"), rs.getDouble("altura"), rs.getString("item_magico_nome"), rs.getString("localizacao_cidade"));
+                Habitante habitanteAux = new Habitante(rs.getString("nome"), rs.getString("raça"), rs.getInt("idade"), rs.getDouble("altura"));
 
                 System.out.println("Nome = " + habitanteAux.getNome());
                 System.out.println("Raça = " + habitanteAux.getRaca());
                 System.out.println("Idade = " + habitanteAux.getIdade());
                 System.out.println("Altura = " + habitanteAux.getAltura());
-                System.out.println("Item mágico = " + habitanteAux.getItem_magico_nome());
-                System.out.println("Localização = " + habitanteAux.getLocalizacao_cidade());
                 System.out.println("--------------------------------");
 
                 habitantes.add(habitanteAux);
@@ -79,12 +75,12 @@ public class HabitanteDAO extends ConnectionDAO{
         return habitantes;
     }
 
-    public boolean updateHabitanteLocalizacao(String localizacao_cidade, String nome) {
+    public boolean updateHabitanteLocalizacao(double  altura, String nome) {
         connectToDB();
-        String sql = "UPDATE Habitante SET localizacao_cidade =? where nome=?";
+        String sql = "UPDATE Habitante SET altura =? where nome=?";
         try {
             pst = con.prepareStatement(sql);
-            pst.setString(1, localizacao_cidade);
+            pst.setDouble(1, altura);
             pst.setString(2, nome);
             pst.execute();
             sucesso = true;
