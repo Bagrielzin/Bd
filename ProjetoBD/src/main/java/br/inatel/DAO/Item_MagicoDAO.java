@@ -50,7 +50,7 @@ public class Item_MagicoDAO extends ConnectionDAO{
 
             while (rs.next()) {
 
-                Item_Magico itemAux = new Item_Magico(rs.getString("nome"), rs.getString("tipo"), rs.getInt("durabiliadde"), rs.getString("material"), rs.getString("natureza"));
+                Item_Magico itemAux = new Item_Magico(rs.getString("nome"), rs.getString("tipo"), rs.getInt("durabilidade"), rs.getString("material"), rs.getString("natureza"));
 
                 System.out.println("Nome = " + itemAux.getNome());
                 System.out.println("Tipo = " + itemAux.getTipo());
