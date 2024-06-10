@@ -70,4 +70,25 @@ public class LocalizacaoDAO extends ConnectionDAO{
         return localizacoes;
     }
 
+    public boolean deleteHabitante(String nome) {
+        connectToDB();
+        String sql = "DELETE FROM Localizacao where cidade=?";
+        try {
+            pst = con.prepareStatement(sql);
+            pst.setString(1, nome);
+            pst.execute();
+            sucesso = true;
+        } catch (SQLException ex) {
+            System.out.println("Erro = " + ex.getMessage());
+            sucesso = false;
+        } finally {
+            try {
+                con.close();
+                pst.close();
+            } catch (SQLException exc) {
+                System.out.println("Erro: " + exc.getMessage());
+            }
+        }
+        return sucesso;
+    }
 }

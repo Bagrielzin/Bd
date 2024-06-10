@@ -11,14 +11,14 @@ public class Main {
         LocalizacaoDAO localizacaoDAO = new LocalizacaoDAO();
         Item_MagicoDAO item_magicoDAO = new Item_MagicoDAO();
 
-        Localizacao l1 = new Localizacao("RJ","favela");
-        Localizacao l2 = new Localizacao("SR","roça");
-        Localizacao l3 = new Localizacao("NY","lixo");
-        Item_Magico i1 = new Item_Magico("bola","a",15,"ferro","élfica");
-        Item_Magico i2 = new Item_Magico("vara","grande",25,"madeira","natureza");
-        Item_Magico i3 = new Item_Magico("espelho","reflexo",2,"vidro","real");
-        Habitante h1 = new Habitante("Jorge","Orc",80,1.9,"bola","RJ");
-        Habitante h2 = new Habitante("Carlos","Anão",29,1.3,"vara","SR");
+        Localizacao l1 = new Localizacao("Leyndell","Lands between");
+        Localizacao l2 = new Localizacao("Anor londo","Lorian");
+        Localizacao l3 = new Localizacao("Yharnam","Victorian");
+        Item_Magico i1 = new Item_Magico("Cutelo","serrado",15,"ferro","humana");
+        Item_Magico i2 = new Item_Magico("Cajado","cetro",25,"madeira","mágica");
+        Item_Magico i3 = new Item_Magico("Arco negro","arco",30,"madeira","élfica");
+        Habitante h1 = new Habitante("Jorge","Orc",80,1.9,"Cutelo","Yharnam");
+        Habitante h2 = new Habitante("Carlos","Anão",29,1.3,"Cajado","Leyndell");
 
         //Inserindo localizações
         //localizacaoDAO.insertLocalizacao(l1);
@@ -31,7 +31,7 @@ public class Main {
         item_magicoDAO.insertItem(i1);
         item_magicoDAO.insertItem(i2);
         item_magicoDAO.insertItem(i3);
-        //item_magicoDAO.selectItem();
+        item_magicoDAO.selectItem();
 
         //Inserindo novos habitante
         //habitanteDAO.insertHabitante(h1);
