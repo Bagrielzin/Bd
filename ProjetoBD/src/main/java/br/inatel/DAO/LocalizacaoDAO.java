@@ -13,12 +13,14 @@ public class LocalizacaoDAO extends ConnectionDAO{
     public boolean insertLocalizacao(Localizacao localizacao){
         connectToDB();
 
-        String sql = "INSERT INTO Localizacao (cidade, reino) VALUES (?,?)";
+        String sql = "INSERT INTO Localizacao (ID, cidade, reino) VALUES (?,?,?)";
 
         try {
             pst = con.prepareStatement(sql);
-            pst.setString(1,localizacao.getCidade());
-            pst.setString(2, localizacao.getReino());
+            pst.setInt(1,localizacao.getID());
+            pst.setString(2,localizacao.getCidade());
+            pst.setString(3, localizacao.getReino());
+            pst.execute();
             sucesso = true;
         } catch (SQLException exc) {
             System.out.println("Erro: " + exc.getMessage());
@@ -44,11 +46,13 @@ public class LocalizacaoDAO extends ConnectionDAO{
             rs = st.executeQuery(sql);
 
             System.out.println("Lista de locais: ");
+            System.out.println("--------------------------------");
 
             while (rs.next()) {
 
-                Localizacao localizacaoAux = new Localizacao(rs.getString("cidade"), rs.getString("reino"));
+                Localizacao localizacaoAux = new Localizacao(rs.getInt("ID") ,rs.getString("cidade"), rs.getString("reino"));
 
+                System.out.println("ID = " + localizacaoAux.getID());
                 System.out.println("Cidade = " + localizacaoAux.getCidade());
                 System.out.println("Reino = " + localizacaoAux.getReino());
                 System.out.println("--------------------------------");
@@ -70,7 +74,7 @@ public class LocalizacaoDAO extends ConnectionDAO{
         return localizacoes;
     }
 
-    public boolean deleteHabitante(String nome) {
+    public boolean deleteLocalizacao(String nome) {
         connectToDB();
         String sql = "DELETE FROM Localizacao where cidade=?";
         try {

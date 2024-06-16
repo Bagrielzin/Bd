@@ -2,13 +2,15 @@ package br.inatel.Model;
 
 public class Item_Magico {
 
+    private int ID;
     private String nome;
     private String tipo;
     private int durabilidade;
     private String  material;
     private String natureza;
 
-    public Item_Magico(String nome, String tipo, int durabilidade, String material, String natureza) {
+    public Item_Magico(int ID, String nome, String tipo, int durabilidade, String material, String natureza) {
+        this.ID = ID;
         this.nome = nome;
         this.tipo = tipo;
         this.durabilidade = durabilidade;
@@ -54,5 +56,13 @@ public class Item_Magico {
 
     public void setNatureza(String natureza) {
         this.natureza = natureza;
+    }
+
+    public int getID() {
+        return ID;
+    }
+
+    public void setID(int ID) {
+        this.ID = ID;
     }
 }

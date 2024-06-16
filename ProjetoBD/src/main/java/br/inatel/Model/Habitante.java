@@ -6,16 +6,16 @@ public class Habitante {
     private String raca;
     private int idade;
     private double altura;
-    private String item_magico_nome;
-    private String localizacao_cidade;
+    private int ID_Item;
+    private int ID_Local;
 
-    public Habitante(String nome, String raca, int idade, double altura, String item_magico_nome, String localizacao_cidade) {
+    public Habitante(String nome, String raca, int idade, double altura, int ID_Item, int ID_Local) {
         this.nome = nome;
         this.raca = raca;
         this.idade = idade;
         this.altura = altura;
-        this.item_magico_nome = item_magico_nome;
-        this.localizacao_cidade = localizacao_cidade;
+        this.ID_Item = ID_Item;
+        this.ID_Local = ID_Local;
     }
 
     public String getNome() {
@@ -34,11 +34,11 @@ public class Habitante {
         return altura;
     }
 
-    public String getItem_magico_nome() {
-        return item_magico_nome;
+    public int getID_Item() {
+        return ID_Item;
     }
 
-    public String getLocalizacao_cidade() {
-        return localizacao_cidade;
+    public int getID_Local() {
+        return ID_Local;
     }
 }

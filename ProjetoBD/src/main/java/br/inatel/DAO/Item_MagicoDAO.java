@@ -13,15 +13,17 @@ public class Item_MagicoDAO extends ConnectionDAO{
     public boolean insertItem(Item_Magico item_magico){
         connectToDB();
 
-        String sql = "INSERT INTO Item_Magico (nome, tipo, durabilidade, material, natureza) VALUES (?,?,?,?,?)";
+        String sql = "INSERT INTO Item_Magico (ID, nome, tipo, durabilidade, material, natureza) VALUES (?,?,?,?,?,?);";
 
         try {
             pst = con.prepareStatement(sql);
-            pst.setString(1,item_magico.getNome());
-            pst.setString(2, item_magico.getTipo());
-            pst.setInt(3,item_magico.getDurabilidade());
-            pst.setString(4,item_magico.getMaterial());
-            pst.setString(5,item_magico.getNatureza());
+            pst.setInt(1,item_magico.getID());
+            pst.setString(2,item_magico.getNome());
+            pst.setString(3, item_magico.getTipo());
+            pst.setInt(4,item_magico.getDurabilidade());
+            pst.setString(5,item_magico.getMaterial());
+            pst.setString(6,item_magico.getNatureza());
+            pst.execute();
             sucesso = true;
         } catch (SQLException exc) {
             System.out.println("Erro: " + exc.getMessage());
@@ -47,11 +49,13 @@ public class Item_MagicoDAO extends ConnectionDAO{
             rs = st.executeQuery(sql);
 
             System.out.println("Lista de itens: ");
+            System.out.println("--------------------------------");
 
             while (rs.next()) {
 
-                Item_Magico itemAux = new Item_Magico(rs.getString("nome"), rs.getString("tipo"), rs.getInt("durabilidade"), rs.getString("material"), rs.getString("natureza"));
+                Item_Magico itemAux = new Item_Magico(rs.getInt("ID") ,rs.getString("nome"), rs.getString("tipo"), rs.getInt("durabilidade"), rs.getString("material"), rs.getString("natureza"));
 
+                System.out.println("ID = " + itemAux.getID());
                 System.out.println("Nome = " + itemAux.getNome());
                 System.out.println("Tipo = " + itemAux.getTipo());
                 System.out.println("Durabilidade = " + itemAux.getDurabilidade());
